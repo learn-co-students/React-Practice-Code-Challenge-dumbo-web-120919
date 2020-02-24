@@ -1,20 +1,19 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
-const Sushi = (props) => {
+const Sushi = (props) => { // i don't like this. make this into a class instead of a function. better for it to have it's own state.
   return (
     <div className="sushi">
       <div className="plate" 
-           onClick={/* Give me a callback! */ null}>
+           onClick={()=> props.eat(props.sushi)}>
         { 
-          /* Tell me if this sushi has been eaten! */ 
-          false ?
+          props.eaten ?
             null
           :
-            <img src={/* Give me an image source! */ } width="100%" />
+            <img src={props.sushi.img_url} alt={props.sushi.name} width="100%" />
         }
       </div>
       <h4 className="sushi-details">
-        {/* Give me a name! */} - ${/* Give me a price! */}
+        {props.sushi.name} - ${props.sushi.price}
       </h4>
     </div>
   )
